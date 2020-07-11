@@ -5,7 +5,7 @@ import(
 )
 
 /*
-	we have done sorting on and then try to find out the
+	we have done sorting and then try to find out the
 	target sum value and return the values whose sum give the target value
  */
 func twoSumWithSort(nums []int, target int) []int {
