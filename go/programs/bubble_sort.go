@@ -1,5 +1,9 @@
 package programs
 
+import (
+
+)
+
 func BubbleSort(array []int) []int {
 	// array length
 		size := len(array)-1
@@ -12,6 +16,7 @@ func BubbleSort(array []int) []int {
 			for index:= 1; index <= size-iteration; index++{
 				if array[index-1] > array[index]{
 					isSorted = false
+					// doing swap
 					temp := array[index]
 					array[index] = array[index-1]
 					array[index-1] = temp
@@ -23,30 +28,5 @@ func BubbleSort(array []int) []int {
 		}
 
 		return array
-		
-	// we can also apply the below code for the bubble sort
-	//check the code after uncommenting it
-
-	/*size := len(array)-1
-	var iteration, swap int
-	for _= range array{
-		swap = 0
-		for index:= 1; index <= size-iteration; index++{
-			if array[index-1] > array[index]{
-				swap++
-				temp := array[index]
-				array[index] = array[index-1]
-				array[index-1] = temp
-			}
-			if swap == 0 && index== size -iteration{
-				return array
-			}
-			fmt.Println("--",array)
-		}
-		iteration++
-		fmt.Println("-",array)
-	}
-
-	return array*/
 
 }
