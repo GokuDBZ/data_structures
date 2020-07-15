@@ -12,6 +12,7 @@ func BubbleSort(array []int) []int {
 			for index:= 1; index <= size-iteration; index++{
 				if array[index-1] > array[index]{
 					isSorted = false
+					// we can make function for swap or use the same code
 					temp := array[index]
 					array[index] = array[index-1]
 					array[index-1] = temp
