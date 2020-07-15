@@ -1,7 +1,5 @@
 package programs
 
-import "fmt"
-
 func InsertionSort(array []int) []int {
 	for index, _:= range array{
 		j := index
@@ -14,9 +12,9 @@ func InsertionSort(array []int) []int {
 			}
 			// decrementing value
 			j-=1
-// 			fmt.Println("--",array)
+			//fmt.Println("--",array)
 		}
-// 		fmt.Println("-",array)
+		//fmt.Println("-",array)
 	}
 	return array
 }
