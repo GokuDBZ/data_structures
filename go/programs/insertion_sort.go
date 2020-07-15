@@ -14,9 +14,9 @@ func InsertionSort(array []int) []int {
 			}
 			// decrementing value
 			j-=1
-			fmt.Println("--",array)
+// 			fmt.Println("--",array)
 		}
-		fmt.Println("-",array)
+// 		fmt.Println("-",array)
 	}
 	return array
 }
