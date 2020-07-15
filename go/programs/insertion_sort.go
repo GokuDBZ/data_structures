@@ -1,22 +1,22 @@
 package programs
 
-func InsertionSort(array []int) []int {
-	for index, _:= range array{
+func InsertionSort(inputArray []int) []int {
+	for index, _:= range inputArray {
 		j := index
 		for j >0 {
-			if array [j] < array[j-1]{
+			if inputArray[j] < inputArray[j-1]{
 				// calling swap method or we can wrie the same code for swap
-				swap(j, j-1, array)
+				swap(j, j-1, inputArray)
 			}else {
 				break
 			}
 			// decrementing value
 			j-=1
-			//fmt.Println("--",array)
+			//fmt.Println("--",inputArray)
 		}
-		//fmt.Println("-",array)
+		//fmt.Println("-",inputArray)
 	}
-	return array
+	return inputArray
 }
 // for swapping value
 func swap(j , i int, array []int){

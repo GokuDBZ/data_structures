@@ -1,21 +1,21 @@
 package programs
-func SelectionSort(array []int) []int {
-	// size of array
-	size := len(array)
-	for index, _ := range array {
-		// for pointing smallest value in sub array
-		// initially the value will be starting position of array
+func SelectionSort(inputArray []int) []int {
+	// size of inputArray
+	size := len(inputArray)
+	for index, _ := range inputArray {
+		// for pointing smallest value in sub inputArray
+		// initially the value will be starting position of inputArray
 		pointer:= index
 		for i:= index+1; i < size; i++{
-			if array[pointer] > array[i]{
-				// assigning the smallest value position in sub array
+			if inputArray[pointer] > inputArray[i]{
+				// assigning the smallest value position in sub inputArray
 				pointer = i
 			}
 		}
 		// we can make function for swap or use the same code
-		temp:= array[pointer]
-		array[pointer] = array[index]
-		array[index] = temp
+		temp:= inputArray[pointer]
+		inputArray[pointer] = inputArray[index]
+		inputArray[index] = temp
 	}
-	return array
+	return inputArray
 }
