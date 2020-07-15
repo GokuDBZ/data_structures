@@ -1,9 +1,5 @@
 package programs
 
-import (
-
-)
-
 func BubbleSort(inputArray []int) []int {
 	// inputArray length
 		size := len(inputArray)-1
