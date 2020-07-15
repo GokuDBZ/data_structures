@@ -5,7 +5,7 @@ func InsertionSort(inputArray []int) []int {
 		j := index
 		for j >0 {
 			if inputArray[j] < inputArray[j-1]{
-				// calling swap method or we can wrie the same code for swap
+				// calling swap method or we can write the same code for swap
 				swap(j, j-1, inputArray)
 			}else {
 				break
