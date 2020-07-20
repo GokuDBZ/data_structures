@@ -7,6 +7,7 @@ jobs:
     steps: 
       - checkout
       - run: cd ruby
+      - run: ls
       - run: gem install bundler
       - run: bundle install
   
