@@ -21,6 +21,7 @@ jobs:
               bundle install
               ls
               rspec programs/*
+      - run: echo hello world
 
 workflows:
   version: 2
