@@ -27,7 +27,7 @@ workflows:
   version: 2
   ruby_build_test:
     jobs:
-      - ruby-build
+      - ruby_build
       - ruby_test:
           requires:
             - ruby-build
