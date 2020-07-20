@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.1
+    working_directory: /data_structures/ruby
     steps: 
       - checkout
       - run: ls
