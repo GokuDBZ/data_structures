@@ -20,7 +20,7 @@ jobs:
               gem install bundler
               bundle install
               ls
-              rspec /programs
+              rspec programs/*
 
 workflows:
   ruby_build_test:
