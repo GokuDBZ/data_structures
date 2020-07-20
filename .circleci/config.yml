@@ -8,23 +8,31 @@ jobs:
       - checkout
       - run: gem install bundler
       - run: ls
-      - run: bundle install --gemfile ./ruby/Gemfile
+      - run: bundle install --gemfile ./ruby/Gemfile # we are not in root folder so specifying where to pick Gemfile from
   
   ruby_test:
     docker:
       - image: circleci/ruby:2.5.1
     steps: 
       - checkout
-      - run: |
+      - run:
+          name: our main project resides in /project/data_structures/ruby/ so we will switch to ruby and will run commands in one context
+          command: |  
               cd ruby
               gem install bundler
               bundle install
               ls
               rspec programs/*
+      - run: echo hello world
 
 workflows:
+  version: 2
   ruby_build_test:
     jobs:
-      - ruby_test
+      - ruby_build
+      - ruby_test:
+          requires:
+            - ruby_build
+        
       
     
