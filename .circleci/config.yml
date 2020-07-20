@@ -6,10 +6,9 @@ jobs:
       - image: circleci/ruby:2.5.1
     steps: 
       - checkout
-      - run: cd ruby
-      - run: ls
       - run: gem install bundler
-      - run: bundle install
+      - run: ls
+      - run: bundle install --gemfile /ruby/Gemfile
   
   ruby_test:
     docker:
