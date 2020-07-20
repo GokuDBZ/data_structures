@@ -30,7 +30,7 @@ workflows:
       - ruby_build
       - ruby_test:
           requires:
-            - ruby-build
+            - ruby_build
         
       
     
