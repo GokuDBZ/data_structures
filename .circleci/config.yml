@@ -1,11 +1,28 @@
 version: 2.1
 
 jobs:
-  build:
+  ruby_build:
     docker:
       - image: circleci/ruby:2.5.1
-    working_directory: /data_structures/ruby
     steps: 
       - checkout
-      - run: ls
+      - run: cd ruby
+      - run: gem install bundler
+      - run: bundle install
+  
+  ruby_test:
+    docker:
+      - image: circleci/ruby:2.5.1
+    steps: 
+      - checkout
+      - run: cd ruby
+      - run: gem install bundler
+      - run: bundle install
+
+workflows:
+  ruby_build_test:
+    jobs:
+      - ruby_build
+      - ruby_test
+      
     
