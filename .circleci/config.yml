@@ -23,6 +23,7 @@ jobs:
               rspec programs/*
 
 workflows:
+  version: 2
   ruby_build_test:
     jobs:
       - ruby-build
