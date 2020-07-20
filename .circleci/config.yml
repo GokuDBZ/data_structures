@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: gem install bundler
       - run: ls
-      - run: bundle install --gemfile /ruby/Gemfile
+      - run: bundle install --gemfile ./ruby/Gemfile
   
   ruby_test:
     docker:
