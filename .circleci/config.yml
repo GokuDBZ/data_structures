@@ -17,7 +17,8 @@ jobs:
       - checkout
       - run: cd ruby
       - run: gem install bundler
-      - run: bundle install
+      - run: bundle install --gemfile ./ruby/Gemfile
+      - run: bundle exec rspec ruby/
 
 workflows:
   ruby_build_test:
