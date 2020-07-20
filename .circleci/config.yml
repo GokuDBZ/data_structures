@@ -15,7 +15,9 @@ jobs:
       - image: circleci/ruby:2.5.1
     steps: 
       - checkout
-      - run: |  # our project is inside ruby/ so we are doing it all in one run
+      - run:
+          name: our main project resides in /project/data_structures/ruby/ so we will switch to ruby and will run commands in one context
+          command: |  
               cd ruby
               gem install bundler
               bundle install
