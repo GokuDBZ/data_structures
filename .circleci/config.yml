@@ -18,12 +18,11 @@ jobs:
       - run: cd ruby
       - run: gem install bundler
       - run: bundle install --gemfile ./ruby/Gemfile
-      - run: bundle exec .ruby/vendor/bundle/rspec ruby/
+      - run: bundle exec ./ruby/vendor/bundle/rspec ruby/
 
 workflows:
   ruby_build_test:
     jobs:
-      - ruby_build
       - ruby_test
       
     
