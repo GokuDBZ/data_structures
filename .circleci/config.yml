@@ -1,0 +1,30 @@
+version: 2.1
+
+jobs:
+  ruby_build:
+    docker:
+      - image: circleci/ruby:2.5.1
+    steps: 
+      - checkout
+      - run: gem install bundler
+      - run: ls
+      - run: bundle install --gemfile ./ruby/Gemfile
+  
+  ruby_test:
+    docker:
+      - image: circleci/ruby:2.5.1
+    steps: 
+      - checkout
+      - run: |
+              cd ruby
+              gem install bundler
+              bundle install
+              ls
+              rspec programs/*
+
+workflows:
+  ruby_build_test:
+    jobs:
+      - ruby_test
+      
+    

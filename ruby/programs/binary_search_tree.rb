@@ -1,5 +1,5 @@
 class Node
-    attr_accessor :value, :right, left, :parent
+    attr_accessor :value, :right, :left, :parent
 
     def inititialize(val, parent=nil)
         @value = val
