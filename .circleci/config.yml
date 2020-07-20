@@ -8,14 +8,14 @@ jobs:
       - checkout
       - run: gem install bundler
       - run: ls
-      - run: bundle install --gemfile ./ruby/Gemfile
+      - run: bundle install --gemfile ./ruby/Gemfile # we are not in root folder so specifying where to pick Gemfile from
   
   ruby_test:
     docker:
       - image: circleci/ruby:2.5.1
     steps: 
       - checkout
-      - run: |
+      - run: |  # our project is inside ruby/ so we are doing it all in one run
               cd ruby
               gem install bundler
               bundle install
@@ -25,6 +25,10 @@ jobs:
 workflows:
   ruby_build_test:
     jobs:
-      - ruby_test
+      - ruby-build
+      - ruby_test:
+          requires:
+            - ruby-build
+        
       
     
