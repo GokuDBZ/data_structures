@@ -15,16 +15,22 @@ jobs:
       - image: circleci/ruby:2.5.1
     steps: 
       - checkout
-      - run: |
-              cd ruby
-              gem install bundler
-              bundle install
-              ls
-              rspec programs/*
+      - run:
+          working_directory: ./ruby
+          command: gem install bundler
+      - run:
+          working_directory: ./ruby
+          command: bundle install
+      - run:
+          working_directory: ./ruby
+          command: rspec programs/*
 
 workflows:
   ruby_build_test:
     jobs:
-      - ruby_test
+      - ruby_build
+      - ruby_test:
+          requires:
+            - ruby_build
       
     
