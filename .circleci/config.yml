@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: gem install bundler
       - run: ls
-      - run: bundle install --gemfile ./ruby/Gemfile
+      - run: bundle install --gemfile ./ruby/Gemfile # we are in data_structures and our repo in ruby so from root i am giving path of gemfile.lock
   
   ruby_test:
     docker:
@@ -17,15 +17,15 @@ jobs:
       - checkout
       - run: 
           working_directory: ruby/
-          command: |
-              ls
-              gem install bundler
-      - run: |
-              cd ruby
-              gem install bundler
-              bundle install
-              ls
-              rspec programs/*
+          command: gem install bundler
+      - run:
+          working_directory: ruby/
+          command: bundle install            
+      - run: 
+          working_directory: ruby/
+          command: rspec programs/*
+          name: "Running Tests"
+              
 
 workflows:
   ruby_build_test:
