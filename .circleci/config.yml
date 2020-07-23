@@ -15,14 +15,15 @@ jobs:
       - image: circleci/ruby:2.5.1
     steps: 
       - checkout
+      - working_directory: ruby/
       - run: 
-          working_directory: ruby/
+          #working_directory: ruby/
           command: gem install bundler
       - run:
-          working_directory: ruby/
+          #working_directory: ruby/
           command: bundle install            
       - run: 
-          working_directory: ruby/
+          #working_directory: ruby/
           command: rspec programs/*
           name: "Running Tests"
               
