@@ -5,12 +5,11 @@ provider "aws" {
   secret_key = "eZwXLLbgXd7+XXGYJI8OYnqHnoGuZLnR49zpjKW2"
 }
 
-resource "aws_s3_bucket" "b" {
-  bucket = "my-tf-test-bucket"
+resource "aws_s3_bucket" "demo" {
+  bucket = "demo.suraj"
   acl    = "private"
 
   tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
+    Name        = "Demo SRJ"
   }
 }
