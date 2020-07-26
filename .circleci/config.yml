@@ -47,21 +47,24 @@ jobs:
 workflows:
   ruby_build_test:
     jobs:
-      # - ruby_build:
-      #     filters:
-      #       branches:
-      #         only: 
-      #           - master
-      #           - /(ruby-.*)|(ci-.*)/
-      # - ruby_test:
-      #     requires:
-      #       - ruby_build
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
-      #           - /(ruby-.*)|(ci-.*)/
-      - deploy
+      - ruby_build:
+          filters:
+            branches:
+              only: 
+                - master
+                - /(ruby-.*)|(ci-.*)/
+      - ruby_test:
+          requires:
+            - ruby_build
+          filters:
+            branches:
+              only:
+                - master
+                - /(ruby-.*)|(ci-.*)/
+      - deploy:
+          type: approval
+          requires:
+            - ruby_test
 
         
       
