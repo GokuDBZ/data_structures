@@ -33,8 +33,7 @@ workflows:
             branches:
               only: 
                 - master
-                - /ruby-.*/
-                - /ci-.*/
+                - /(ruby-.*)|(ci-.*)/
       - ruby_test:
           requires:
             - ruby_build
@@ -42,8 +41,7 @@ workflows:
             branches:
               only:
                 - master
-                - /ruby-.*/
-                - /ci-.*/
+                - /(ruby-.*)|(ci-.*)/
 
         
       
