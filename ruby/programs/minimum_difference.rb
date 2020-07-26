@@ -34,11 +34,11 @@ def minimum_difference(x_array, y_array)
     while true do
 
         break if x_array[x_count].nil? || y_array[y_count].nil?
-        # if both nos are equal then we found our difference and break
+        # if both nos are equal then we found our difference and break 
         if(x_array[x_count] == y_array[y_count])
             
             temp_result[0] = [x_array[x_count], y_array[y_count]]
-            temp_result[1] =  x_array[x_count] - y_array[y_count]
+            temp_result[1] =  x_array[x_count] - y_array[y_count] 
             break
         end
         puts " value #{x_array[x_count]}  x counter #{x_count}"
@@ -46,9 +46,9 @@ def minimum_difference(x_array, y_array)
         
         temp_diff = (x_array[x_count] - y_array[y_count]).abs
         
-           #temp_diff <= minimum_diff => there can be a case if we have aleady minimum difference lets say 2 and in next iteration we again get pair diff 2 so we need to update to latest min diff 
+           #temp_diff <= minimum_diff => there can be a case if we have aleady minimum difference lets say 2 and in next iteration we again get pair diff 2 so we need to update to latest min diff  
            
-           # If we want to keep old min diff use temp_diff < minimum_diff 
+           # If we want to keep old min diff use temp_diff < minimum_diff
            if temp_diff < minimum_diff 
             minimum_diff = temp_diff
             temp_result[0] = [x_array[x_count], y_array[y_count]]
@@ -88,9 +88,7 @@ describe "calculate minimum difference" do
     it "method should return pair having smallest diffrence" do
         array1 = [-2,0,6,7,8,5]
         array2 = [5,3,1,-5,6]
-
-        [0,-2,5,6,7,8]
-        [-5,1,3,5,6]
+        
         expect( minimum_difference(array1, array2)).to eq([[5,5], 0] )
     end
 
