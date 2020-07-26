@@ -42,7 +42,7 @@ jobs:
                 terraform --version
       - run: terraform init
       - run: terraform plan
-      - run: terraform destroy
+      - run: terraform destroy -auto-approve 
 
 workflows:
   ruby_build_test:
