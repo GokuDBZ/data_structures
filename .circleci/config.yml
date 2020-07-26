@@ -41,7 +41,7 @@ jobs:
       - run: | 
                 terraform --version
       - run: terraform init
-      - run: terrafrom plan
+      - run: terraform plan
       - run: terraform apply 
 
 workflows:
