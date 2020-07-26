@@ -26,13 +26,13 @@ jobs:
           command: rspec programs/*
   
 
-    deploy:
-      machine:
-        image: ubuntu-1604:201903-01
-      steps:
-        - checkout
-        - run: | 
-                  terraform  -v
+  deploy:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run: | 
+                terraform  -v
 
 workflows:
   ruby_build_test:
