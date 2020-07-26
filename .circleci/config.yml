@@ -26,13 +26,23 @@ jobs:
           command: rspec programs/*
 
 workflows:
-  version: 2
   ruby_build_test:
     jobs:
-      - ruby_build
+      - ruby_build:
+          filters:
+            branches:
+              only: 
+                - master
+                - /ruby-*/
       - ruby_test:
           requires:
             - ruby_build
+          filters:
+            branches:
+              only:
+                - master
+                - /ruby-*/
+
         
       
     
