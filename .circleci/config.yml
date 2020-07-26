@@ -24,24 +24,34 @@ jobs:
       - run:
           working_directory: ./ruby
           command: rspec programs/*
+  
+
+    deploy:
+      machine:
+        image: ubuntu-1604:201903-01
+      steps:
+        - checkout
+        - run: | 
+                  terraform  -v
 
 workflows:
   ruby_build_test:
     jobs:
-      - ruby_build:
-          filters:
-            branches:
-              only: 
-                - master
-                - /(ruby-.*)|(ci-.*)/
-      - ruby_test:
-          requires:
-            - ruby_build
-          filters:
-            branches:
-              only:
-                - master
-                - /(ruby-.*)|(ci-.*)/
+      # - ruby_build:
+      #     filters:
+      #       branches:
+      #         only: 
+      #           - master
+      #           - /(ruby-.*)|(ci-.*)/
+      # - ruby_test:
+      #     requires:
+      #       - ruby_build
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - /(ruby-.*)|(ci-.*)/
+      - deploy
 
         
       
