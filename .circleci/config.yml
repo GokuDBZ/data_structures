@@ -41,6 +41,8 @@ jobs:
       - run: | 
                 terraform --version
       - run: terraform init
+      - run: terrafrom plan
+      - run: terraform apply 
 
 workflows:
   ruby_build_test:
