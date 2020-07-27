@@ -5,6 +5,10 @@
  Solution- Since we have to use single loop. using a hash will be bit helpful
            on each iteration we will add value as a key but before that we will check if key already exists or not
            If key exist then we got our duplicate no.
+
+    Average Time Complexity - O(n) as we are iterating over all elements
+    Average Space Complexity - O(n) as we are using a hash as well to store values
+    
 =end
 
 
