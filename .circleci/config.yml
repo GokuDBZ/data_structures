@@ -24,6 +24,25 @@ jobs:
       - run:
           working_directory: ./ruby
           command: rspec programs/*
+  
+
+  deploy:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run: |  
+                ls
+                sudo apt-get install unzip
+                wget https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip
+                unzip terraform_0.12.29_linux_amd64.zip
+                sudo mv terraform /usr/local/bin/
+
+      - run: | 
+                terraform --version
+      - run: terraform init
+      - run: terraform plan
+      - run: terraform destroy -auto-approve 
 
 workflows:
   ruby_build_test:
@@ -42,6 +61,10 @@ workflows:
               only:
                 - master
                 - /(ruby-.*)|(ci-.*)/
+      - deploy:
+          type: approval
+          requires:
+            - ruby_test
 
         
       
