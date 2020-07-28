@@ -106,7 +106,7 @@ workflows:
                 - /(ruby-.*)|(ci-.*)/
       - destroy_infra:
           requires:
-            - approve_deploy
+            - approve_destroy
           filters:
             branches:
               only:
