@@ -43,7 +43,7 @@ jobs:
       - terraform_setup
       - run: terraform --version
                 
-      - run: terraform init
+      - run: terraform init -auto-approve
       - run: terraform plan
       - run: terraform destroy -auto-approve
       
@@ -55,7 +55,7 @@ jobs:
       - terraform_setup
       - run: terraform --version
                 
-      - run: terraform init
+      - run: terraform init -auto-approve
       #- run: terraform plan
       - run: terraform destroy -auto-approve
   
@@ -108,7 +108,7 @@ workflows:
               only:
                 - master
                 - /(ruby-.*)|(ci-.*)/
-      - destroy:
+      - destroy-infra:
           steps:
             - terraform_setup
             - run: terraform init -auto-approve
