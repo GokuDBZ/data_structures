@@ -44,7 +44,7 @@ jobs:
       - terraform_setup
       - run: terraform --version
                 
-      - run: terraform init -auto-approve
+      - run: terraform init
       - run: terraform plan
       - run: terraform destroy -auto-approve
       
@@ -56,7 +56,7 @@ jobs:
       - terraform_setup
       - run: terraform --version
                 
-      - run: terraform init -auto-approve
+      - run: terraform init
       #- run: terraform plan
       - run: terraform destroy -auto-approve
   
