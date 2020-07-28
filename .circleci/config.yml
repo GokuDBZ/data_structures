@@ -104,7 +104,7 @@ workflows:
               only:
                 - master
                 - /(ruby-.*)|(ci-.*)/
-      - destroy-infra:
+      - destroy_infra:
           requires:
             - approve_deploy
           filters:
