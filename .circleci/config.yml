@@ -1,4 +1,5 @@
 version: 2.1
+
 commands:
   terraform_setup:
     steps:
@@ -96,10 +97,6 @@ workflows:
                 - master
                 - /(ruby-.*)|(ci-.*)/
       - deploy:
-          steps:
-            - terraform_setup
-            - run: terraform init -auto-approve
-            - run: terrafrom apply -auto-approve 
           requires:
             - approve_deploy
           filters:
@@ -108,10 +105,6 @@ workflows:
                 - master
                 - /(ruby-.*)|(ci-.*)/
       - destroy-infra:
-          steps:
-            - terraform_setup
-            - run: terraform init -auto-approve
-            - run: terrafrom destroy -auto-approve
           requires:
             - approve_deploy
           filters:
