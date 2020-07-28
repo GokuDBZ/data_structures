@@ -28,7 +28,9 @@ object PracticeQuestions {
 
         println(  reverseList(ArrayBuffer("s", "u", "r", "a", "j"))) // reversing a string array
 
-        println( pallindrome(ArrayBuffer(1,2,1)) )
+        println( pallindrome(ArrayBuffer(1,2,2,1)) )
+
+        println( flatten_list( ArrayBuffer(1,2, ArrayBuffer(3,4, ArrayBuffer(3, 5))),      ArrayBuffer())  ) // faltten array of arrays
 
 
     }
@@ -71,5 +73,15 @@ object PracticeQuestions {
         else {
             return false
         }        
+    }
+
+    def flatten_list[T](inputList: ArrayBuffer[T], outPutList: ArrayBuffer[T]): ArrayBuffer[T] = {
+        for(input <- inputList) {
+            input match {    
+              case newInput: ArrayBuffer[T] => flatten_list(newInput, outPutList)
+              case _:Int => { outPutList += input}
+            }
+        }
+        return outPutList
     }
 }
