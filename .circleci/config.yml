@@ -46,7 +46,7 @@ jobs:
                 
       - run: terraform init
       - run: terraform plan
-      - run: terraform destroy -auto-approve
+      - run: terraform apply
       
   destroy_infra:
     machine:
