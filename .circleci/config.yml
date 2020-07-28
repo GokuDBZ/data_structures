@@ -79,10 +79,18 @@ workflows:
                 - /(ruby-.*)|(ci-.*)/
       - deploy:
           type: approval
+          steps:
+            - terraform_setup
+            - run: terraform init -auto-approve
+            - run: terrafrom apply -auto-approve 
           requires:
             - ruby_test
       - destroy:
           type: approval
+          steps:
+            - terraform_setup
+            - run: terraform init -auto-approve
+            - run: terrafrom destroy -auto-approve
           requires:
             - ruby_test
           filters:
