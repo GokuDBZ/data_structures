@@ -77,24 +77,24 @@ workflows:
               only:
                 - master
                 - /(ruby-.*)|(ci-.*)/
-      - approve_deploy:
-          type: approval
-          requires:
-            - ruby_test
-          filters:
-            branches:
-              only:
-                - master
-                - /(ruby-.*)|(ci-.*)/
-      - approve_destroy:
-          type: approval
-          requires:
-            - ruby_test
-          filters:
-            branches:
-              only:
-                - master
-                - /(ruby-.*)|(ci-.*)/
+      # - approve_deploy:
+      #     type: approval
+      #     requires:
+      #       - ruby_test
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - /(ruby-.*)|(ci-.*)/
+      # - approve_destroy:
+      #     type: approval
+      #     requires:
+      #       - ruby_test
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
+      #           - /(ruby-.*)|(ci-.*)/
       - deploy:
           type: approval
           steps:
@@ -102,19 +102,20 @@ workflows:
             - run: terraform init -auto-approve
             - run: terrafrom apply -auto-approve 
           requires:
-            - approve_deploy
+            - ruby_test
           filters:
             branches:
               only:
                 - master
                 - /(ruby-.*)|(ci-.*)/
       - destroy-infra:
+          type: approval
           steps:
             - terraform_setup
             - run: terraform init -auto-approve
             - run: terrafrom destroy -auto-approve
           requires:
-            - approve_destroy
+            - ruby_test
           filters:
             branches:
               only:
