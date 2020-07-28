@@ -14,9 +14,10 @@ provider "aws" {
 #   }
 # }
 
-resource "aws_s3_bucket" "demo" {
+resource "aws_s3_bucket" "demo_srj" {
   bucket = "demo.srj"
   acl    = "private"
+  region = "us-east-1"
 
   tags = {
     Name        = "Demo SRJ"
