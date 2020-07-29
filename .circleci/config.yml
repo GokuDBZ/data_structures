@@ -14,7 +14,9 @@ commands:
       - run: |
                export AWS_ACCESS_KEY_ID=$access-key
                export AWS_SECRET_ACCESS_KEY=$access-secret
-               export AWS_DEFAULT_REGION="us-west-2"     
+               export AWS_DEFAULT_REGION="us-west-2"
+               echo $access-key
+               echo $access-secret     
       
 jobs:
   ruby_build:
@@ -47,8 +49,8 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - terraform_setup
       - set_aws_variables
+      - terraform_setup
       - run: terraform --version
                 
       - run: | 
@@ -63,8 +65,8 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - set_aws_variables
       - terraform_setup
+      - set_aws_variables
       - run: terraform --version
                 
       - run: terraform init
