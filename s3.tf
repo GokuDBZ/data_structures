@@ -5,7 +5,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "demo.zubbi"
+    bucket = "demo.zubby"
     key    = "app/dev/terraform.tfstate"
     region = "us-east-2"
   }
