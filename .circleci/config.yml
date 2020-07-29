@@ -1,5 +1,26 @@
 version: 2.1
 
+commands:
+  terraform_setup:
+    steps:
+      - run: |  
+                ls
+                sudo apt-get install unzip
+                wget https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip
+                unzip terraform_0.12.29_linux_amd64.zip
+                sudo mv terraform /usr/local/bin/
+
+  # keys are stored in context 
+  
+  # set_aws_variables:
+  #   steps:
+  #     - run: |
+  #              export AWS_ACCESS_KEY_ID=$access-key"
+  #              export AWS_SECRET_ACCESS_KEY="${secret-key}"
+  #              export AWS_DEFAULT_REGION="us-west-2"
+  #              echo $AWS_ACCESS_KEY_ID
+  #              echo $AWS_ACCESS_KEY_ID     
+      
 jobs:
   ruby_build:
     docker:
@@ -31,29 +52,43 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - run: |  
-                ls
-                sudo apt-get install unzip
-                wget https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_linux_amd64.zip
-                unzip terraform_0.12.29_linux_amd64.zip
-                sudo mv terraform /usr/local/bin/
-
+      #- set_aws_variables
+      - terraform_setup
+      - run: terraform --version
+                
       - run: | 
-                terraform --version
-      - run: terraform init
+                terraform init
+                echo $$access-key
+                echo $$secret-key 
       - run: terraform plan
-      - run: terraform destroy -auto-approve 
+      - run: terraform apply -auto-approve
+      
+  destroy_infra:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - terraform_setup
+      #- set_aws_variables
+      - run: terraform --version
+                
+      - run: terraform init
+      #- run: terraform plan
+      - run: terraform destroy -auto-approve
+  
 
 workflows:
   ruby_build_test:
     jobs:
       - ruby_build:
+          context: srj-context
           filters:
             branches:
               only: 
                 - master
                 - /(ruby-.*)|(ci-.*)/
       - ruby_test:
+          context: srj-context
           requires:
             - ruby_build
           filters:
@@ -61,10 +96,45 @@ workflows:
               only:
                 - master
                 - /(ruby-.*)|(ci-.*)/
-      - deploy:
+      - approve_deploy:
+          context: srj-context
           type: approval
           requires:
             - ruby_test
+          filters:
+            branches:
+              only:
+                - master
+                - /(ruby-.*)|(ci-.*)/
+      - approve_destroy:
+          context: srj-context
+          type: approval
+          requires:
+            - ruby_test
+          filters:
+            branches:
+              only:
+                - master
+                - /(ruby-.*)|(ci-.*)/
+      - deploy:
+          context: srj-context
+          requires:
+            - approve_deploy
+          filters:
+            branches:
+              only:
+                - master
+                - /(ruby-.*)|(ci-.*)/
+      - destroy_infra:
+          context: srj-context
+          requires:
+            - approve_destroy
+          filters:
+            branches:
+              only:
+                - master
+                - /(ruby-.*)|(ci-.*)/
+          
 
         
       
