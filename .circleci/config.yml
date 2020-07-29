@@ -44,7 +44,9 @@ jobs:
       - terraform_setup
       - run: terraform --version
                 
-      - run: terraform init
+      - run: | 
+                terraform init
+                ls 
       - run: terraform plan
       - run: terraform apply -auto-approve
       
