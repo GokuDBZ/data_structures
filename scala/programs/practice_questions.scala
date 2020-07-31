@@ -84,4 +84,70 @@ object PracticeQuestions {
         }
         return outPutList
     }
+
+    def duplicateIntoOne[T](inputArray: ArrayBuffer[T]): List[T] = {
+        var map = Map.empty[T, ArrayBuffer[T]]
+
+        for(input <- inputArray) {
+            if(map.contains(input)){
+                map(input) += input // if value is already present as a key then put that into the array value
+            }
+            else {
+              map(input -> ArrayBuffer(input))
+            }
+            println(map)
+        }
+
+        return map.keys.toList
+    }
+
+    def duplicateIntoOneWithLength[T](inputArray: ArrayBuffer[T]): List[T] = {
+        var map = Map.empty[T, ArrayBuffer[T]]
+
+        for(input <- inputArray) {
+            if(map.contains(input)){
+                map(input) += input // if value is already present as a key then put that into the array value
+            }
+            else {
+              map(input -> ArrayBuffer(input))
+            }
+            println(map)
+        }
+
+        return map.keys.toList
+    }
+
+    // k is count till what we need to shift array
+    def rotateArray[T](k:Int, inputArray: ArrayBuffer[T]): ArrayBuffer[T] = {
+        var tmpArray:ArrayBuffer[T] = Array.empty
+        var tmpLength:Int = k - 1
+
+        var index:Int = 0
+        var actual_length:Int = inputArray.length -1 
+        
+        println(inputArray)
+        //tmpArray(0) =1 
+        println(inputArray)
+        while(index < k){ // this loop will only k times so that we can get the array to shift in end
+          tmpArray += inputArray(index)
+          index+=1
+        }
+
+        println(inputArray)
+
+        while(index < inputArray.length) { // after putting required elements in tmp array now shift  remiaing elements in array to left 
+            inputArray(index - k) = inputArray(index)
+            index+=1
+        }
+        
+        println(inputArray)
+
+        while(tmpLength >= 0) {
+            inputArray(index - 1) = tmpArray(tmpLength)
+            index -= 1
+            tmpLength -= 1
+        }
+        return inputArray
+    }
+
 }
