@@ -2,7 +2,7 @@
 
 =begin
   we need to rotate array by given length
-  eq id array is [1,2,3,4,5] and length is k i.e 2 then output should be [3,4,5,1,2]
+  Eq- if array is [1,2,3,4,5] and we need to move by k i.e 2 then output should be [3,4,5,1,2]
 
   Solution: 
     Step 1 - We will take out array to move into a temporary array
@@ -27,7 +27,7 @@ def rotate_array(k, input)
         array_to_put_in_last << input[index]
         index+=1
     end
-    
+
     puts array_to_put_in_last
     while(index < input.length) do
         puts "index #{index}"
@@ -43,4 +43,5 @@ def rotate_array(k, input)
         index-=1
         actual_length-=1
     end
+    input
 end
