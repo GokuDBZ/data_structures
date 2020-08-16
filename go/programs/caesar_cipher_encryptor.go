@@ -16,3 +16,4 @@ func Encryptor(message string)(string , string){
 	//fmt.Println("decrypt message:", decryptMessage)
 	return "Encrypt Message: "+encryptMessage, "\nDecrypt Message: "+decryptMessage
 }
+
