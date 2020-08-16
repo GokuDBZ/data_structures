@@ -26,10 +26,6 @@ end
 
 describe "Caesar Cypher" do
     it "Case 1" do
-        expect(insertion_sort(['s', 'u', 'r', 'a', 'j'])).to eq(['u','w', 't', 'c', 'l'] )
-    end
-
-    it "Case 2" do
-        expect(insertion_sort([7,5,2,1,6,3,4])).to eq([1,2,3,4,5,6,7] )
+        expect(caesar_cypher(['s', 'u', 'r', 'a', 'j'])).to eq(['u','w', 't', 'c', 'l'] )
     end
 end
