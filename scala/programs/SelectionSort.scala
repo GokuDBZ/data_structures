@@ -26,8 +26,11 @@ import scala.collection.mutable.ArrayBuffer
 
 object SelectionSort {
 
-}
- def selectionSort(inputArray: ArrayBuffer[Int]):  ArrayBuffer[Int] = {
+  def main(args:Array[String]) {
+    println(selectionSort(ArrayBuffer(4,5,1,2,3)))
+  }
+
+  def selectionSort(inputArray: ArrayBuffer[Int]):  ArrayBuffer[Int] = {
     var unsorted_index = 0 // initially whole array is unsorted , so unsorted array will start from index
     
     
@@ -54,3 +57,6 @@ object SelectionSort {
     
     inputArray
  }
+
+ 
+
