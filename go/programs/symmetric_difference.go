@@ -2,7 +2,7 @@ package programs
 
 import "sort"
 
-func symmetricDifference(inputArray , inputArray2 []int)([]int, []int) {
+func symmetricDifference(inputArray, inputArray2 []int) ([]int, []int) {
 	firstArrayIndex, secondArrayIndex := 0, 0
 	firstArraySize, secondArraySize := len(inputArray), len(inputArray2)
 	sort.Ints(inputArray)
@@ -21,4 +21,5 @@ func symmetricDifference(inputArray , inputArray2 []int)([]int, []int) {
 			firstArrayIndex++
 		}
 	}
+	return symmetric, difference
 }
