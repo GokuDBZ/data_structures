@@ -5,7 +5,7 @@ import "log"
 	The time complexity will be O(n) and space complexity will be O(1)
  */
 
-func Rotation(inputArray []int, length int)[]int{
+func RotationArray(inputArray []int, length int)[]int{
 	size := len(inputArray)-1	//size of array
 	rightPointer, leftPointer := 0, size	//pointer for right and left movement
 	for rightPointer <= leftPointer{
