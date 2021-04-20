@@ -1,5 +1,4 @@
 package programs
-
 /*
 	by using map(array index value is key and position is value) and compliment is
 	target value minus the current index array value if that value is present in map
@@ -9,8 +8,8 @@ func twoSumWithMap(nums []int, target int) []int {
 	// creating value variable of type map
 	value := make(map[int]int)
 
-	for i := range nums {
-		compliment := target - nums[i]      // check the required value
+	for i, _ := range nums{
+		compliment := target - nums[i] // check the required value
 		if _, ok := value[compliment]; ok { // compliment value is present or not
 			return []int{value[compliment], i}
 		}
