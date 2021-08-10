@@ -40,6 +40,6 @@ describe "find duplicat element using single array" do
     it "empty" do
     end
 
-    it "hello" do
+    xit "hello" do
     end
 end
