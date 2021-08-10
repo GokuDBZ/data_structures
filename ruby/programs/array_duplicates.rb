@@ -37,4 +37,7 @@ describe "find duplicat element using single array" do
         expect(duplicate_in_array(input_array)).to eq(5)
     end
 
+    it "hello" do
+    end
+
 end
