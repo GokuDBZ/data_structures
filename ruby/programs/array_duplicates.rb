@@ -41,5 +41,6 @@ describe "find duplicat element using single array" do
     end
 
     xit "hello" do
+        puts "hello"
     end
 end
